@@ -85,6 +85,7 @@
     </table>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="CustomEase.min.js"></script>
 
     <script>
       let svg = document.querySelector("svg").getBoundingClientRect();
@@ -115,17 +116,29 @@
         }
       }
 
+      let randoVal = Math.random();
+
       function horseRace() {
         for (let i = 0; i < animateArray.length; i++) {
-          time = Math.random() * 20;
+          let randomVal = Math.random();
+
+          CustomEase.create(
+            "run" + [i],
+            "M0,0 C0.016,0.034 -0.026,0.226 0.114,0.368 0.21,0.466 0.252,0.484 0.46,0.548 0.617,0.596 " +
+              randomVal +
+              ",0.758 1,1"
+          );
+          time = Math.random() * 10 + 10;
           let element = animateArray[i];
-          TweenMax.to(element, time, {
+          TweenLite.to(element, time, {
+            ease: "run" + [i],
             x: svg.width - 40,
+
             onComplete: function() {
               console.log(i, Math.round(time * 100) / 100);
               scores.push(Math.round(time * 100) / 100);
               horses.push(element.id);
-              time = Math.random() * 20;
+              time = Math.random() * 10 + 10;
 
               scores.sort(function(a, b) {
                 return a - b;
