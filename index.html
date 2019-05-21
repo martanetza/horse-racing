@@ -116,7 +116,7 @@
         }
       }
 
-      let randoVal = Math.random();
+      let randomVal = Math.random();
 
       function horseRace() {
         for (let i = 0; i < animateArray.length; i++) {
@@ -124,9 +124,9 @@
 
           CustomEase.create(
             "run" + [i],
-            "M0,0 C0.016,0.034 -0.026,0.226 0.114,0.368 0.21,0.466 0.252,0.484 0.46,0.548 0.617,0.596 " +
+            "M0,0 C0.216,0.088 0.436,0.168 0.52,0.298 0.627,0.464 0.621,0.492 " +
               randomVal +
-              ",0.758 1,1"
+              ",0.664 0.804,0.804 0.856,0.81 1,1"
           );
           time = Math.random() * 10 + 10;
           let element = animateArray[i];
